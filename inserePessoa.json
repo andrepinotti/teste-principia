@@ -1,0 +1,55 @@
+{
+    "inserePessoa": [
+        {
+            "id": "usp-45030275899",
+            "nome": "Antônio Pereira",
+            "cpf": "450.302.758-99",
+            "data_nasc": "03/10/2000",
+            "email": "antoniopereira@gmail.com",
+            "cep": "15035-160",
+            "endereco": "Guiomar Assad Callil",
+            "numero": "89",
+            "bairro": "Vila Itália",
+            "cidade": "São José do Rio Preto",
+            "uf": "SP",
+            "telefone": "17999234994",
+            "ra": "107593",
+            "curso": "Engenharia Civil",
+            "faculdade": "usp"
+        },
+        {
+            "id": "unifesp-45030298499",
+            "nome": "Luana Rogrigues",
+            "cpf": "450.302.984-99",
+            "data_nasc": "13/12/2002",
+            "email": "antoniopereira@gmail.com",
+            "cep": "01023-001",
+            "endereco": "Barão de Duprat",
+            "numero": "89",
+            "bairro": "Centro",
+            "cidade": "São Paulo",
+            "uf": "SP",
+            "telefone": "17998324774",
+            "ra": "738945",
+            "curso": "Engenharia Química",
+            "faculdade": "unifesp"
+        },
+        {
+            "id": "ifsp-12345690701",
+            "nome": "Maria Souza",
+            "cpf": "123.456.908-01",
+            "data_nasc": "25/08/1995",
+            "email": "maria.souza@ifsp.edu.br",
+            "cep": "12345-678",
+            "endereco": "Rua das Flores",
+            "numero": "123",
+            "bairro": "Jardim das Rosas",
+            "cidade": "São Paulo",
+            "uf": "SP",
+            "telefone": "11987654321",
+            "ra": "987654",
+            "curso": "Engenharia de Produção",
+            "faculdade": "ifsp"
+        }
+    ]
+}
