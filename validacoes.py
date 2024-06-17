@@ -67,10 +67,10 @@ def gera_arquivo_json():
 
 gera_arquivo_json()
 
-def validar_id(cliente):
-    cpf_em_numeros = re.sub(r'\D', '', cliente["cpf"])
-    id_correto = f"{cliente['faculdade']}-{cpf_em_numeros}"
-    return id_correto == cliente["id"]
+def validar_id(estudante):
+    cpf_em_numeros = re.sub(r'\D', '', estudante["cpf"])
+    id_correto = f"{estudante['faculdade']}-{cpf_em_numeros}"
+    return id_correto == estudante["id"]
 
 
 def validar_cpf(cpf):
@@ -92,47 +92,47 @@ def validar_data_nascimento(data_nasc):
     except ValueError:
         return False
 
-def validar_dados(cliente):
+def validar_dados(estudante):
     erros = []
-    if not validar_cpf(cliente["cpf"]):
+    if not validar_cpf(estudante["cpf"]):
         erros.append("CPF inválido")
-    if not cliente["nome"]:
+    if not estudante["nome"]:
         erros.append("Nome completo inválido")
-    if not validar_data_nascimento(cliente["data_nasc"]):
+    if not validar_data_nascimento(estudante["data_nasc"]):
         erros.append("Data de nascimento inválida ou menor de 18 anos")
-    if not validar_email(cliente["email"]):
+    if not validar_email(estudante["email"]):
         erros.append("Email inválido")
-    if not validar_telefone(cliente["telefone"]):
+    if not validar_telefone(estudante["telefone"]):
         erros.append("Telefone inválido")
-    if not validar_id(cliente):
+    if not validar_id(estudante):
         erros.append("Id inválido")
     return erros
 
 # Função para salvar os dados no Excel
-def salvar_em_excel(cliente, erros):
+def salvar_em_excel(estudante, erros):
     df_novo = pd.DataFrame([{
-        "id": cliente["id"],
-        "nome": cliente["nome"],
-        "data_nascimento": cliente["data_nasc"],
-        "cpf": cliente["cpf"],
-        "email": cliente["email"],
-        "cep": cliente["cep"],
-        "endereco": cliente["endereco"],
-        "numero": cliente["numero"],
-        "bairro": cliente["bairro"],
-        "cidade": cliente["cidade"],
-        "uf": cliente["uf"],
-        "telefone": cliente["telefone"],
-        "ra": cliente["ra"],
-        "curso": cliente["curso"],
-        "faculdade": cliente["faculdade"],
+        "id": estudante["id"],
+        "nome": estudante["nome"],
+        "data_nascimento": estudante["data_nasc"],
+        "cpf": estudante["cpf"],
+        "email": estudante["email"],
+        "cep": estudante["cep"],
+        "endereco": estudante["endereco"],
+        "numero": estudante["numero"],
+        "bairro": estudante["bairro"],
+        "cidade": estudante["cidade"],
+        "uf": estudante["uf"],
+        "telefone": estudante["telefone"],
+        "ra": estudante["ra"],
+        "curso": estudante["curso"],
+        "faculdade": estudante["faculdade"],
         "erros": ", ".join(erros) if erros else ""
     }])
 
 
 
     if erros:
-        arquivo_saida = "clientes_invalidos.xlsx"
+        arquivo_saida = "estudantes_invalidos.xlsx"
     else:
         arquivo_saida = "sistema.xlsx"
 
@@ -164,14 +164,14 @@ if __name__ == "__main__":
     
     try:
         tabela_validos = pd.read_excel("sistema.xlsx", engine='openpyxl')
-        print("Clientes válidos:")
+        print("Estudantes válidos:")
         print(tabela_validos)
     except FileNotFoundError:
-        print("Nenhum cliente válido foi encontrado.")
+        print("Nenhum estudante válido foi encontrado.")
 
     try:
-        tabela_invalidos = pd.read_excel("clientes_invalidos.xlsx", engine='openpyxl')
-        print("Clientes inválidos:")
+        tabela_invalidos = pd.read_excel("estudantes_invalidos.xlsx", engine='openpyxl')
+        print("Estudante inválidos:")
         print(tabela_invalidos)
     except FileNotFoundError:
-        print("Nenhum cliente inválido foi encontrado.")
+        print("Nenhum estudante inválido foi encontrado.")
